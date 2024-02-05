@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta name="title" content="Liga Magic">
+  <meta name="description" content="Detalhes sobre algumas cartas do jogo Magic: The Gathering, como detalhes da carta e preço de mercado">
+  <meta name="keywords" content="card game, estrategia, marketplace, Magic: The Gathering">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="Portuguese">
+  <meta name="revisit-after" content="2 days">
+  <meta name="author" content="Pedro Cardoso da Silva">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Liga Magic</title>
+</head>
+<body>
+  <aside class="aside">
+    <img class="aside--image" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta selecionada">
+    <span class="aside--divider"></span>
+    <div class="aside--container">
+      <!-- =================================================================================================== -->
+      <button role="button" class="aside--container--button left" aria-label="passar para a carta anterior" id="button-left">
+        <img class="aside--container--button--image" src="./assets/img/left-arrow.svg" alt="seta para esquerda" >
+      </button>
+      <div class="aside--container--image-container" id="image-container">
+        <div class="aside--container--image-container--card">
+          <img class="aside--container--image-container--card--image" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta">
+        </div>
+        <div class="aside--container--image-container--card">
+          <img class="aside--container--image-container--card--image" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta">
+        </div>
+        <div class="aside--container--image-container--card">
+          <img class="aside--container--image-container--card--image" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta">
+        </div>
+      </div>
+      <button role="button" class="aside--container--button right" aria-label="passar para a proxima carta" id="button-right">
+        <img class="aside--container--button--image" src="./assets/img/right-arrow.svg" alt="seta para direita">
+      </button>
+    </div>
+  </aside>
+  <span class="divider"></span>
+  <main class="main" role="main">
+    <header class="main--header" role="heading">
+      <nav class="main--header--nagivation" role="navigation">
+        <ul class="main--header--nagivation--list">
+          <li class="main--header--nagivation--list--item">
+            <a target="_blank" class="main--header--nagivation--list--item--link" href="https://www.ligamagic.com.br/" title="Pagina 'Home' da Liga Magic">Home</a>
+          </li>
+          <li class="main--header--nagivation--list--item">
+            <a target="_blank" class="main--header--nagivation--list--item--link" href="https://www.ligamagic.com.br/" title="Pagina 'Magic: The Gathering' da Liga Magic">Magic: The Gathering</a>
+          </li>
+          <li class="main--header--nagivation--list--item">
+            <a target="_blank" class="main--header--nagivation--list--item--link" href="https://www.ligamagic.com.br/" title="Pagina de 'Busca' da Liga Magic">Busca</a>
+          </li>
+          <li class="main--header--nagivation--list--item">
+            <a target="_blank" class="main--header--nagivation--list--item--link" href="https://www.ligamagic.com.br/" title="Pagina 'Bazar - Lista de Desejos' da Liga Magic">Bazar - Lista de Desejos</a>
+          </li>
+        </ul>
+      </nav>
+      <section class="main--header--container">
+        <div class="main--header--container--content">
+          <span class="main--header--container--content--tag">c</span>
+          <h3 class="main--header--container--content--strong">#045</h3>
+          <p class="main--header--container--content--text">Dominaria remastered</p>
+        </div>
+        <div class="main--header--container--content">
+          <h3 class="main--header--container--content--strong">DMR</h3>
+          <img class="main--header--container--content--indicator" src="./assets/img/down-arrow.svg" alt="seta para baixo">
+        </div>
+      </section>
+    </header>
+    <section class="main--content">
+      <header class="main--content--header" role="heading">
+        <section class="main--content--header--container">
+          <h1 class="main--content--header--container--title" id="card-name">Contramágica</h1>
+          <div class="main--content--header--container--functions">
+            <button role="button" class="main--content--header--container--functions--favorite" id="favorite-button" aria-label="adicionar carta aos favoritos">
+              <img class="main--content--header--container--functions--favorite--image" src="./assets/img/hearth-icon.svg" alt="">
+              <!-- Possivel troca de imagem para icone -->
+            </button>
+            <button role="button" class="main--content--header--container--functions--options" id="options-button" aria-label="visualizar mais opções">
+              <span class="main--content--header--container--functions--options--cube"></span>
+              <span class="main--content--header--container--functions--options--cube"></span>
+              <span class="main--content--header--container--functions--options--cube"></span>
+            </button>
+          </div>
+        </section>
+        <p class="main--content--header--caption" id="caption">Counterspell</p>
+      </header>
+      <section class="main--content--add">
+        <h2 class="main--content--add--title">
+          Lista de Compras
+          <button role="button" class="main--content--add--title--help" aria-label="visualizar ajuda rapida na sessão de lista de compras">
+            <img class="main--content--add--title--help--image" src="./assets/img/help-icon.svg" alt="icone de ajuda">
+          </button>
+        </h2>
+        <p class="main--content--add--text">Add a carta aqui e deixe que a liga calcule o melhor preço para você!</p>
+        <div class="main--content--add--container">
+          <div class="main--content--add--container--counter">
+            <button role="button" class="main--content--add--container--counter--button" id="add-button" aria-label="adicionar mais um na quantidade do carrinho">
+              <img class="main--content--add--container--counter--button--image" src="./assets/img/sum-icon.svg" alt="icone para somar mais um ao valor de quantidade do carrinho">
+            </button>
+            <input class="main--content--add--container--counter--count" type="text" value="1" id="counter-value">
+            <button role="button" class="main--content--add--container--counter--button" id="subtract-button" aria-label="subtrair um da quantidade do carrinho">
+              <img class="main--content--add--container--counter--button--image" src="./assets/img/subtract-icon.svg" alt="icone para subtrair mais um ao valor de quantidade do carrinho">
+            </button>
+          </div>
+          <button role="button" class="main--content--add--container--settings" id="settings" aria-label="visualizar configurações">
+            <img class="main--content--add--container--settings--image" src="./assets/img/settings-icon.svg" alt="icone das configurações">
+          </button>
+          <button role="button" class="main--content--add--container--add-more" id="add-to-list" aria-label="adicionar ao carrinho">
+            <img class="main--content--add--container--add-more--image" src="./assets//img/plus-icon.svg" alt="icone que simboliza a adição">
+            <span class="main--content--add--container--add-more--text">Adicionar na lista</span>
+          </button>
+        </div>
+      </section>
+      <article role="article" class="main--content--detail">
+        <header role="heading" class="main--content--detail--header">
+          <h3 class="main--content--detail--header--title">Detalhes da Carta</h3>
+          <button role="button" class="main--content--detail--header--more-info" id="more-info-detail" aria-label="ver mais detalhes da carta">Ver Tudo</button>
+        </header>
+        <section class="main--content--detail--info">
+          <h4 class="main--content--detail--info--title">Cor</h4>
+          <p class="main--content--detail--info--content-text text-blue">Azul</p>
+        </section>
+        <section class="main--content--detail--info">
+          <h4 class="main--content--detail--info--title">Custo de Mana</h4>
+          <div class="main--content--detail--info--content-icon">
+            <img class="main--content--detail--info--content-icon--image" src="./assets/img/gout-icon.svg" alt="icone de gota de água">
+            <img class="main--content--detail--info--content-icon--image" src="./assets/img/gout-icon.svg" alt="icone de gota de água">
+          </div>
+        </section>
+        <section class="main--content--detail--info">
+          <h4 class="main--content--detail--info--title">Tipo</h4>
+          <p class="main--content--detail--info--content-text text-gray">Mágica instantânea</p>
+        </section>
+      </article>
+      <article role="article" class="main--content--detail">
+        <header role="heading" class="main--content--detail--header">
+          <h3 class="main--content--detail--header--title">
+            Preço Médio no Marketplace
+            <button role="button" class="main--content--detail--header--title--help">
+              <img class="main--content--detail--header--title--help--image" src="./assets/img/help-icon.svg" alt="icone de ajuda">
+            </button>
+          </h3>
+          <button role="button" class="main--content--detail--header--more-info" id="more-info-marketplace" aria-label="ver mais preços de mercado da carta">Ver Tudo</button>
+        </header>
+        <section class="main--content--detail--info">
+          <h4 class="main--content--detail--info--title">
+            <span class="main--content--detail--info--title--class">N</span>
+            <p>Normal</p>
+          </h4>
+          <div class="main--content--detail--info--container">
+            <div class="main--content--detail--info--container--marketplace-price">
+              <span class="main--content--detail--info--container--marketplace-price--divider divider-green"></span>
+              <p class="main--content--detail--info--container--marketplace-price--price">R$6,28</p>
+            </div>
+            <div class="main--content--detail--info--container--marketplace-price">
+              <span class="main--content--detail--info--container--marketplace-price--divider divider-yellow"></span>
+              <p class="main--content--detail--info--container--marketplace-price--price">R$6,28</p>
+            </div>
+            <div class="main--content--detail--info--container--marketplace-price">
+              <span class="main--content--detail--info--container--marketplace-price--divider divider-orange"></span>
+              <p class="main--content--detail--info--container--marketplace-price--price">R$6,28</p>
+            </div>
+          </div>
+        </section>
+      </article>
+    </section>
+  </main>
+
+  <script type="module" src="./assets/js/script.js"></script>
+</body>
+</html>
