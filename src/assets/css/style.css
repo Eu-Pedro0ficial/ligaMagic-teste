@@ -102,8 +102,6 @@ body::-webkit-scrollbar-thumb {
   position: relative;
 
   width: 100%;
-
-  border: 1px solid purple;
 }
 
 .aside--container--button{
@@ -118,42 +116,33 @@ body::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 .aside--container--button.left{
-  left: -5%;
+  left: -3%;
 }
 .aside--container--button.right{
-  right: -5%;
+  right: -3%;
 }
 
 .aside--container--button--image{
-  border: 10px solid red;
+
 }
 
 .aside--container--image-container{
   display: flex;
-  /* align-items: center; */
-  justify-content: end;
   gap: 10px;
 
   width: 100%;
-  /* overflow: hidden; */
-
-  transition: transform 0.5s ease-in-out;
-
-  border: 1px solid red;
+  overflow: hidden;
 }
+
 .aside--container--image-container--card{
-  transition: all 5s;
-}
-
-.aside--container--image-container--card:first-child{
-  margin-left: -200%;
-  border: 10px solid purple !important;
-}
-
-.aside--container--image-container--card--image{
   width: 140px;
-
-  border: 1px solid red;
+  transition: all 1s;
+}
+.aside--container--image-container--card:first-child{
+  margin-left: -33%;
+}
+.aside--container--image-container--card.gray-card{
+  filter: grayscale(1);
 }
 
 .divider{
@@ -316,6 +305,10 @@ body::-webkit-scrollbar-thumb {
   transform: scale(1.1, 1.1);
 }
 
+.main--content--header--container--functions--favorite--image.hidden{
+  display: none;
+}
+
 .main--content--header--caption{
   font-style: italic;
   font-family: 400;
@@ -328,10 +321,82 @@ body::-webkit-scrollbar-thumb {
   flex-direction: column;
   gap: 20px;
 
+  position: relative;
+
   padding: 20px 25px;
 
   background-color: var(--card-background);
   box-shadow: -1px 4px 14px -6px var(--secondary-gray);
+}
+
+.main--content--add--modal{
+  width: 300px;
+  height: 100%;
+
+  border: 1px solid var(--divider);
+  border-radius: 4px;
+
+  box-shadow: -2px 3px 4px var(--divider);
+
+}
+
+.main--content--add--modal--header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.main--content--add--modal--header--close{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  font-weight: 700;
+  font-size: 1rem;
+}
+.main--content--add--modal--header--close:hover{
+  color: red;
+}
+
+
+.main--content--add--modal--container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.main--content--add--modal--container--select{
+  width: 200px;
+  padding: 10px 0px;
+  font-weight: 600;
+
+  border: none;
+  background-color: var(--divider);
+  color: var(--primary-gray);
+
+  border-radius: 4px;
+}
+
+.main--content--add--balloon{
+  display: none;
+
+  position: absolute;
+  top: -40%;
+
+  padding: 10px 20px;
+
+  border-radius: 5px;
+  border: 1px solid var(--divider);
+
+  background-color: var(--background);
+
+  box-shadow: -3px 3px 8px var(--divider);
 }
 
 .main--content--add--title{
@@ -342,10 +407,7 @@ body::-webkit-scrollbar-thumb {
 
 
 .main--content--add--title--help{
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: transparent;
+  
 }
 
 .main--content--add--title--help--image:hover{
@@ -402,6 +464,11 @@ body::-webkit-scrollbar-thumb {
   font-weight: 600;
   font-size: 1.2rem;
 }
+.main--content--add--container--counter--count::-webkit-inner-spin-button,
+.main--content--add--container--counter--count::-webkit-outer-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 .main--content--add--container--settings{
   display: flex;
@@ -453,6 +520,24 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  position: relative;
+}
+
+.main--content--detail--header--balloon{
+  display: none;
+
+  position: absolute;
+  top: -160%;
+
+  padding: 10px 20px;
+
+  border-radius: 5px;
+  border: 1px solid var(--divider);
+
+  background-color: var(--background);
+
+  box-shadow: -3px 3px 8px var(--divider);
 }
 
 .main--content--detail--header--title{
@@ -465,11 +550,6 @@ body::-webkit-scrollbar-thumb {
 
 .main--content--detail--header--title--help{
   display: inline-block;
-
-  border: none;
-  outline: none;
-  background-color: transparent;
-  cursor: pointer;
 }
 .main--content--detail--header--title--help:hover{
   transform: scale(1.1, 1.1);
@@ -501,6 +581,9 @@ body::-webkit-scrollbar-thumb {
 
   background-color: var(--card-background);
   padding: 14px 15px;
+}
+.main--content--detail--info.hidden{
+  display: none !important;
 }
   
 .main--content--detail--info--title{

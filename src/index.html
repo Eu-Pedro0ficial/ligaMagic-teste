@@ -16,7 +16,7 @@
 </head>
 <body>
   <aside class="aside">
-    <img class="aside--image" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta selecionada">
+    <img class="aside--image" id="card-image" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta selecionada">
     <span class="aside--divider"></span>
     <div class="aside--container">
       <!-- =================================================================================================== -->
@@ -24,15 +24,10 @@
         <img class="aside--container--button--image" src="./assets/img/left-arrow.svg" alt="seta para esquerda" >
       </button>
       <div class="aside--container--image-container" id="image-container">
-        <div class="aside--container--image-container--card">
-          <img class="aside--container--image-container--card--image" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta">
-        </div>
-        <div class="aside--container--image-container--card">
-          <img class="aside--container--image-container--card--image" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta">
-        </div>
-        <div class="aside--container--image-container--card">
-          <img class="aside--container--image-container--card--image" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta">
-        </div>
+        <img class="aside--container--image-container--card gray-card" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta">
+        <img class="aside--container--image-container--card gray-card" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta">
+        <img class="aside--container--image-container--card gray-card" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta">
+        <img class="aside--container--image-container--card" src="./assets/img/Carta_Counterspell.svg" alt="imagem da carta">
       </div>
       <button role="button" class="aside--container--button right" aria-label="passar para a proxima carta" id="button-right">
         <img class="aside--container--button--image" src="./assets/img/right-arrow.svg" alt="seta para direita">
@@ -75,11 +70,11 @@
         <section class="main--content--header--container">
           <h1 class="main--content--header--container--title" id="card-name">Contramágica</h1>
           <div class="main--content--header--container--functions">
-            <button role="button" class="main--content--header--container--functions--favorite" id="favorite-button" aria-label="adicionar carta aos favoritos">
-              <img class="main--content--header--container--functions--favorite--image" src="./assets/img/hearth-icon.svg" alt="">
-              <!-- Possivel troca de imagem para icone -->
+            <button title="favoritar" role="button" class="main--content--header--container--functions--favorite" id="favorite-button" aria-label="adicionar carta aos favoritos">
+              <img width="30" class="main--content--header--container--functions--favorite--image" src="./assets/img/hearth-icon.svg" alt="icone de coração com fundo transparente e bordas cinzas" id="heart-transparent">
+              <img width="31" class="main--content--header--container--functions--favorite--image hidden" src="./assets/img/hearth-red-icon.svg" alt="icone de coração vermelho" id="heart-red">
             </button>
-            <button role="button" class="main--content--header--container--functions--options" id="options-button" aria-label="visualizar mais opções">
+            <button title="opções" role="button" class="main--content--header--container--functions--options" id="options-button" aria-label="visualizar mais opções">
               <span class="main--content--header--container--functions--options--cube"></span>
               <span class="main--content--header--container--functions--options--cube"></span>
               <span class="main--content--header--container--functions--options--cube"></span>
@@ -89,11 +84,30 @@
         <p class="main--content--header--caption" id="caption">Counterspell</p>
       </header>
       <section class="main--content--add">
+        <dialog class="main--content--add--modal" id="modal">
+          <header class="main--content--add--modal--header">
+            <h1 class="main--content--add--modal--header--filter">Filtragem</h1>
+            <button class="main--content--add--modal--header--close" id="button-close">X</button>
+          </header>
+          <div class="main--content--add--modal--container">
+            <select class="main--content--add--modal--container--select" name="" id="type-select">
+              <option class="main--content--add--modal--container--select--option" value="" selected>Tipo</option>
+            </select>
+            <select class="main--content--add--modal--container--select" name="" id="color-select">
+              <option class="main--content--add--modal--container--select--option" value="" selected>Cor</option>
+            </select>
+          </div>
+        </dialog>
+        <section class="main--content--add--balloon" id="add-balloon">
+          <p>
+            Nesta sessão você podera selecionar a quantidade da carta que deseja comprar, além de poder adicionar ela a sua lista e filtrar as cartas
+          </p>
+        </section>
         <h2 class="main--content--add--title">
           Lista de Compras
-          <button role="button" class="main--content--add--title--help" aria-label="visualizar ajuda rapida na sessão de lista de compras">
+          <span class="main--content--add--title--help" id="add-help" aria-label="visualizar ajuda rapida na sessão de lista de compras">
             <img class="main--content--add--title--help--image" src="./assets/img/help-icon.svg" alt="icone de ajuda">
-          </button>
+          </span>
         </h2>
         <p class="main--content--add--text">Add a carta aqui e deixe que a liga calcule o melhor preço para você!</p>
         <div class="main--content--add--container">
@@ -101,12 +115,12 @@
             <button role="button" class="main--content--add--container--counter--button" id="add-button" aria-label="adicionar mais um na quantidade do carrinho">
               <img class="main--content--add--container--counter--button--image" src="./assets/img/sum-icon.svg" alt="icone para somar mais um ao valor de quantidade do carrinho">
             </button>
-            <input class="main--content--add--container--counter--count" type="text" value="1" id="counter-value">
+            <input class="main--content--add--container--counter--count" type="number" value="1" id="counter-value">
             <button role="button" class="main--content--add--container--counter--button" id="subtract-button" aria-label="subtrair um da quantidade do carrinho">
               <img class="main--content--add--container--counter--button--image" src="./assets/img/subtract-icon.svg" alt="icone para subtrair mais um ao valor de quantidade do carrinho">
             </button>
           </div>
-          <button role="button" class="main--content--add--container--settings" id="settings" aria-label="visualizar configurações">
+          <button role="button" class="main--content--add--container--settings" id="filter" aria-label="visualizar configurações">
             <img class="main--content--add--container--settings--image" src="./assets/img/settings-icon.svg" alt="icone das configurações">
           </button>
           <button role="button" class="main--content--add--container--add-more" id="add-to-list" aria-label="adicionar ao carrinho">
@@ -118,31 +132,44 @@
       <article role="article" class="main--content--detail">
         <header role="heading" class="main--content--detail--header">
           <h3 class="main--content--detail--header--title">Detalhes da Carta</h3>
-          <button role="button" class="main--content--detail--header--more-info" id="more-info-detail" aria-label="ver mais detalhes da carta">Ver Tudo</button>
+          <span class="main--content--detail--header--more-info" id="more-info-detail" aria-label="ver mais detalhes da carta">Ver Tudo</span>
         </header>
         <section class="main--content--detail--info">
           <h4 class="main--content--detail--info--title">Cor</h4>
-          <p class="main--content--detail--info--content-text text-blue">Azul</p>
+          <p class="main--content--detail--info--content-text text-blue" id="card-color">Azul</p>
         </section>
         <section class="main--content--detail--info">
           <h4 class="main--content--detail--info--title">Custo de Mana</h4>
-          <div class="main--content--detail--info--content-icon">
+          <div class="main--content--detail--info--content-icon" id="mana-cost">
             <img class="main--content--detail--info--content-icon--image" src="./assets/img/gout-icon.svg" alt="icone de gota de água">
             <img class="main--content--detail--info--content-icon--image" src="./assets/img/gout-icon.svg" alt="icone de gota de água">
           </div>
         </section>
         <section class="main--content--detail--info">
           <h4 class="main--content--detail--info--title">Tipo</h4>
-          <p class="main--content--detail--info--content-text text-gray">Mágica instantânea</p>
+          <p class="main--content--detail--info--content-text text-gray" id="card-type">Mágica instantânea</p>
+        </section>
+        <section class="main--content--detail--info hidden">
+          <h4 class="main--content--detail--info--title">Artista</h4>
+          <p class="main--content--detail--info--content-text text-gray" id="card-artist">rk post</p>
+        </section>
+        <section class="main--content--detail--info hidden">
+          <h4 class="main--content--detail--info--title">Raridade</h4>
+          <p class="main--content--detail--info--content-text text-gray" id="card-rarity">Comum</p>
         </section>
       </article>
       <article role="article" class="main--content--detail">
         <header role="heading" class="main--content--detail--header">
+          <section class="main--content--detail--header--balloon" id="marketplace-balloon">
+            <p>
+              Nesta sessão você podera visualizar os melhores preços de mercado
+            </p>
+          </section>
           <h3 class="main--content--detail--header--title">
             Preço Médio no Marketplace
-            <button role="button" class="main--content--detail--header--title--help">
+            <span class="main--content--detail--header--title--help" id="marketplace-help">
               <img class="main--content--detail--header--title--help--image" src="./assets/img/help-icon.svg" alt="icone de ajuda">
-            </button>
+            </span>
           </h3>
           <button role="button" class="main--content--detail--header--more-info" id="more-info-marketplace" aria-label="ver mais preços de mercado da carta">Ver Tudo</button>
         </header>
@@ -154,15 +181,15 @@
           <div class="main--content--detail--info--container">
             <div class="main--content--detail--info--container--marketplace-price">
               <span class="main--content--detail--info--container--marketplace-price--divider divider-green"></span>
-              <p class="main--content--detail--info--container--marketplace-price--price">R$6,28</p>
+              <p class="main--content--detail--info--container--marketplace-price--price" id="card-low-price">R$6,28</p>
             </div>
             <div class="main--content--detail--info--container--marketplace-price">
               <span class="main--content--detail--info--container--marketplace-price--divider divider-yellow"></span>
-              <p class="main--content--detail--info--container--marketplace-price--price">R$6,28</p>
+              <p class="main--content--detail--info--container--marketplace-price--price" id="card-medium-price">R$6,28</p>
             </div>
             <div class="main--content--detail--info--container--marketplace-price">
               <span class="main--content--detail--info--container--marketplace-price--divider divider-orange"></span>
-              <p class="main--content--detail--info--container--marketplace-price--price">R$6,28</p>
+              <p class="main--content--detail--info--container--marketplace-price--price" id="card-high-price">R$6,28</p>
             </div>
           </div>
         </section>
