@@ -305,6 +305,4 @@ document.querySelector("#options-button").addEventListener("click", ()=>{
   isOptionsModal = false;
 })
 
-// @todo - refatorar projeto
-
-// @todo - fazer o carrosel se mover ao clicar e arrastar (diferencial)
+// @todo - fazer o carrosel se mover ao clicar e arrastar (diferencial) drag an hover

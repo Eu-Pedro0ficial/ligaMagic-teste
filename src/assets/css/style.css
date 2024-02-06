@@ -122,10 +122,6 @@ body::-webkit-scrollbar-thumb {
   right: -3%;
 }
 
-.aside--container--button--image{
-
-}
-
 .aside--container--image-container{
   display: flex;
   gap: 10px;
@@ -169,10 +165,6 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: column;
   gap: 25px;
-}
-
-.main--header--nagivation{
-
 }
 
 .main--header--nagivation--list{
@@ -234,10 +226,6 @@ body::-webkit-scrollbar-thumb {
 .main--header--container--content--text{
   font-size: 1.4rem;
   font-weight: 400;
-}
-
-.main--header--container--content--indicator{
-
 }
 
 .main--content{
@@ -316,9 +304,6 @@ body::-webkit-scrollbar-thumb {
   box-shadow: -2px 3px 4px var(--divider);
   background-color: var(--background);
 }
-.main--content--header--container--functions--options-modal.hidden{
-  display: none !important;
-}
 
 .main--content--header--container--functions--options-modal--button{
   width: 150px;
@@ -351,10 +336,6 @@ body::-webkit-scrollbar-thumb {
   transform: scale(1.1, 1.1);
 }
 
-.main--content--header--container--functions--favorite--image.hidden{
-  display: none;
-}
-
 .main--content--header--caption{
   font-style: italic;
   font-family: 400;
@@ -378,6 +359,8 @@ body::-webkit-scrollbar-thumb {
 .main--content--add--modal{
   width: 300px;
   height: 100%;
+
+  z-index: 10;
 
   border: 1px solid var(--divider);
   border-radius: 4px;
@@ -449,11 +432,6 @@ body::-webkit-scrollbar-thumb {
   font-weight: 600;
   font-size: 2rem;
   color: var(--primary-gray);
-}
-
-
-.main--content--add--title--help{
-  
 }
 
 .main--content--add--title--help--image:hover{
@@ -601,10 +579,6 @@ body::-webkit-scrollbar-thumb {
   transform: scale(1.1, 1.1);
 }
 
-.main--content--detail--header--title--help--image{
-
-}
-
 .main--content--detail--header--more-info{
   border: none;
   outline: none;
@@ -627,9 +601,6 @@ body::-webkit-scrollbar-thumb {
 
   background-color: var(--card-background);
   padding: 14px 15px;
-}
-.main--content--detail--info.hidden{
-  display: none !important;
 }
   
 .main--content--detail--info--title{
@@ -702,6 +673,10 @@ body::-webkit-scrollbar-thumb {
   font-weight: 600;
   font-size: 1.2rem;
   color: var(--secondary-gray);
+}
+
+.hidden{
+  display: none !important;
 }
 
 @media (max-width: 500px){
