@@ -83,6 +83,7 @@ body::-webkit-scrollbar-thumb {
 
 .aside--image{
   width: 100%;
+  object-fit: cover;
 }
 
 .aside--divider{
@@ -133,6 +134,7 @@ body::-webkit-scrollbar-thumb {
 .aside--container--image-container--card{
   width: 140px;
   transition: all 1s;
+  object-fit: cover;
 }
 .aside--container--image-container--card:first-child{
   margin-left: -33%;
@@ -520,7 +522,7 @@ body::-webkit-scrollbar-thumb {
 
   padding: 8px 16px;
 
-  background-color: #127119;
+  background-color: var(--primary-green);
   color: white;
 
   font-weight: 500;
@@ -528,9 +530,11 @@ body::-webkit-scrollbar-thumb {
   
   margin-left: 15px;
 }
-
-.main--content--add--container--settings:hover,
 .main--content--add--container--add-more:hover{
+  background-color: #127118d2;
+}
+
+.main--content--add--container--settings:hover{
   transform: scale(1.1, 1.1);
 }
 
