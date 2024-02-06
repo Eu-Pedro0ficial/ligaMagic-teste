@@ -5,7 +5,7 @@ let imageContainer = document.querySelector("#image-container");
 
 const cardImage = document.querySelector("#card-image");
 const cardName = document.querySelector("#card-name");
-const caption = document.querySelector("#caption");
+const cardCaption = document.querySelector("#caption");
 const cardColor = document.querySelector("#card-color");
 const cardManaCost = document.querySelector("#mana-cost");
 const cardType = document.querySelector("#card-type");
@@ -18,10 +18,6 @@ const highPrice = document.querySelector("#card-high-price");
 
 const heartTransparent = document.querySelector("#heart-transparent");
 const heartRed = document.querySelector("#heart-red");
-
-const optionsButton = document.querySelector("#options-button");
-
-const addToList = document.querySelector("#add-to-list");
 
 function getLocalStorageData(){
   return JSON.parse(localStorage.getItem("data"));
@@ -45,54 +41,64 @@ function loadCards(data){
 }
 loadCards(cards);
 
-const fixedChartIndex = 3
+const fixedChartIndex = 3;
 
 function updateImageContainer(){
-  imageContainer = document.querySelector("#image-container")
+  imageContainer = document.querySelector("#image-container");
 }
 
 function getCurrentCard(){
-  return imageContainer.children[fixedChartIndex];
+  if(imageContainer.children[fixedChartIndex]){
+    return imageContainer.children[fixedChartIndex];
+    
+  }
+  return imageContainer.children[imageContainer.children.length - 1];
 }
 
 function getFirstChieldImageContainer(){
   return imageContainer.children[0];
 }
 
-function setGrayFilterOnUnselectedCards(){
+function applyGrayFilterToUnselectedCards(){
   const cardImagesArray = Object.keys(imageContainer.children).map(key => imageContainer.children[key]);
   cardImagesArray.forEach((card)=> {
     if(!card.classList.contains("gray-card")) card.classList.add("gray-card");
   });
   getCurrentCard().classList.remove("gray-card");
 }
-setGrayFilterOnUnselectedCards();
+applyGrayFilterToUnselectedCards();
 
-function toggleFavorite(){
+function setFavorite(){
   const currentCardInfo = getLocalStorageData().filter((card) => card.image === getCurrentCard().getAttribute("src"));
   const newData = getLocalStorageData().filter((card) => card.image !== getCurrentCard().getAttribute("src"));
 
+  currentCardInfo[0].favorite = true;
+  newData.push(currentCardInfo[0]);
+  setLocalStorageData(newData);
+}
+
+function unsetFavorite(){
+  const currentCardInfo = getLocalStorageData().filter((card) => card.image === getCurrentCard().getAttribute("src"));
+  const newData = getLocalStorageData().filter((card) => card.image !== getCurrentCard().getAttribute("src"));
+  currentCardInfo[0].favorite = false;
+  newData.push(currentCardInfo[0]);
+  setLocalStorageData(newData);
+}
+
+function manageFavorite(){
   if(!heartTransparent.classList.contains("hidden")){
     heartTransparent.classList.add("hidden");
     heartRed.classList.remove("hidden");
-
-    currentCardInfo[0].favorite = true;
-    newData.push(currentCardInfo[0]);
-    setLocalStorageData(newData);
+    setFavorite();
     return
   }
 
-  if(heartTransparent.classList.contains("hidden")){
-    heartTransparent.classList.remove("hidden");
-    heartRed.classList.add("hidden");
-
-    currentCardInfo[0].favorite = false;
-    newData.push(currentCardInfo[0]);
-    setLocalStorageData(newData);
-  }
+  heartTransparent.classList.remove("hidden");
+  heartRed.classList.add("hidden");
+  unsetFavorite();
 }
 
-function setFavoriteCard(isFavorited){
+function setFavoriteInformation(isFavorited){
   if(!isFavorited){
     heartTransparent.classList.remove("hidden");
     heartRed.classList.add("hidden");
@@ -104,14 +110,11 @@ function setFavoriteCard(isFavorited){
 }
 
 function setCurrentCardInformation(){
-  let currentCardInfo = getLocalStorageData() ?
-  getLocalStorageData().filter((card) => card.image === getCurrentCard().getAttribute("src")) :
-  cards.filter((card) => card.image === getCurrentCard().getAttribute("src"));
-
+  let currentCardInfo = getLocalStorageData().filter((card) => card.image === getCurrentCard().getAttribute("src"));
 
   cardImage.src = currentCardInfo[0].image;
   cardName.textContent = currentCardInfo[0].title;
-  caption.textContent = currentCardInfo[0].caption;
+  cardCaption.textContent = currentCardInfo[0].caption;
   cardColor.style.color = currentCardInfo[0].color;
   cardColor.textContent = currentCardInfo[0].colorText;
 
@@ -128,7 +131,7 @@ function setCurrentCardInformation(){
   cardArtist.textContent = currentCardInfo[0].artist;
   cardRarity.textContent = currentCardInfo[0].rarity;
 
-  setFavoriteCard(currentCardInfo[0].favorite);
+  setFavoriteInformation(currentCardInfo[0].favorite);
 }
 setCurrentCardInformation();
 
@@ -140,7 +143,7 @@ function previousImage(){
 
 document.querySelector("#button-left").addEventListener("click", ()=>{
   previousImage();
-  setGrayFilterOnUnselectedCards();
+  applyGrayFilterToUnselectedCards();
   setCurrentCardInformation();
 });
 
@@ -151,15 +154,15 @@ function nextImage(){
 
 document.querySelector("#button-right").addEventListener("click", ()=>{
   nextImage();
-  setGrayFilterOnUnselectedCards();
+  applyGrayFilterToUnselectedCards();
   setCurrentCardInformation();
 });
 
+document.querySelector("#favorite-button").addEventListener("click", manageFavorite)
+
 const countValue = document.querySelector("#counter-value");
 let amount = countValue.value;
-
 function setValueInCard(value){
-
   if(value < 0){
     amount = 0;
     countValue.value = amount;
@@ -169,15 +172,8 @@ function setValueInCard(value){
   countValue.value = value;
 }
 
-document.querySelector("#favorite-button").addEventListener("click", toggleFavorite)
-
-document.querySelector("#add-button").addEventListener("click", ()=>{
-  setValueInCard(++amount)
-});
-
-document.querySelector("#subtract-button").addEventListener("click", ()=>{
-  setValueInCard(--amount)
-});
+document.querySelector("#add-button").addEventListener("click", ()=> setValueInCard(++amount));
+document.querySelector("#subtract-button").addEventListener("click", ()=> setValueInCard(--amount));
 
 document.querySelector("#more-info-detail").addEventListener("click", ()=>{
 
@@ -187,11 +183,8 @@ document.querySelector("#more-info-detail").addEventListener("click", ()=>{
     return
   }
 
-  if(!cardArtist.parentNode.classList.contains("hidden")){
-    cardArtist.parentNode.classList.add("hidden");
-    cardRarity.parentNode.classList.add("hidden");
-    return
-  }
+  cardArtist.parentNode.classList.add("hidden");
+  cardRarity.parentNode.classList.add("hidden");
 });
 
 document.querySelector("#more-info-marketplace").addEventListener("click", ()=>{
@@ -200,30 +193,18 @@ document.querySelector("#more-info-marketplace").addEventListener("click", ()=>{
 
 const marketplaceSessionBalloon = document.querySelector("#marketplace-balloon");
 
-document.querySelector("#marketplace-help").addEventListener("mouseenter", ()=>{
-  marketplaceSessionBalloon.style.display = "block";
-});
-document.querySelector("#marketplace-help").addEventListener("mouseleave", ()=>{
-  marketplaceSessionBalloon.style.display = "none";
-});
+document.querySelector("#marketplace-help").addEventListener("mouseenter", ()=> marketplaceSessionBalloon.style.display = "block");
+document.querySelector("#marketplace-help").addEventListener("mouseleave", ()=> marketplaceSessionBalloon.style.display = "none");
 
 const cartSessionBalloon = document.querySelector("#add-balloon");
 
-document.querySelector("#add-help").addEventListener("mouseenter", ()=>{
-  cartSessionBalloon.style.display = "block";
-});
-document.querySelector("#add-help").addEventListener("mouseleave", ()=>{
-  cartSessionBalloon.style.display = "none";
-});
+document.querySelector("#add-help").addEventListener("mouseenter", ()=> cartSessionBalloon.style.display = "block");
+document.querySelector("#add-help").addEventListener("mouseleave", ()=> cartSessionBalloon.style.display = "none");
 
 const modal = document.querySelector("#modal");
 
-document.querySelector("#filter").addEventListener("click", ()=>{
-  modal.setAttribute("open", "");
-})
-document.querySelector("#button-close").addEventListener("click", ()=>{
-  modal.removeAttribute("open");
-})
+document.querySelector("#filter").addEventListener("click", ()=> modal.setAttribute("open", ""));
+document.querySelector("#button-close").addEventListener("click", ()=> modal.removeAttribute("open"));
 
 function filterRepeatedOptions(data){
   const uniqueOptions = new Set(data);
@@ -234,6 +215,10 @@ function getOptionsValue(key, data){
   const optionsValue = data.map(item => item[key]);
 
   return filterRepeatedOptions(optionsValue);
+}
+
+function alignLetterInsideContainer(){
+  imageContainer.children[0].style.marginLeft = "0";
 }
 
 const typeSelect = document.querySelector("#type-select");
@@ -249,20 +234,26 @@ setTypeOptions();
 
 typeSelect.addEventListener("change", (event)=>{
   const selectedOption = event.target.value;
-  console.log(selectedOption)
 
   if(!selectedOption){
     loadCards(cards);
     updateImageContainer();
-    setGrayFilterOnUnselectedCards()
+    applyGrayFilterToUnselectedCards();
+    setCurrentCardInformation();
     return;
   }
   
   const filteredData = cards.filter((card) => card.type === selectedOption);
   
   loadCards(filteredData);
+
+  if(filteredData.length <= 2){
+    alignLetterInsideContainer();
+  }
+
   updateImageContainer();
-  setGrayFilterOnUnselectedCards()
+  applyGrayFilterToUnselectedCards();
+  setCurrentCardInformation();
 })
 
 const colorSelect = document.querySelector("#color-select");
@@ -278,25 +269,42 @@ setColorOptions();
 
 colorSelect.addEventListener("change", (event)=>{
   const selectedOption = event.target.value;
-  console.log(selectedOption)
 
   if(!selectedOption){
     loadCards(cards);
     updateImageContainer();
-    setGrayFilterOnUnselectedCards()
+    applyGrayFilterToUnselectedCards();
+    setCurrentCardInformation();
     return;
   }
   
   const filteredData = cards.filter((card) => card.colorText === selectedOption);
   
   loadCards(filteredData);
+
+  if(filteredData.length <= 2){
+    alignLetterInsideContainer();
+  }
+
   updateImageContainer();
-  setGrayFilterOnUnselectedCards()
+  applyGrayFilterToUnselectedCards();
+  setCurrentCardInformation();
 })
 
-// @todo - Contruir o DATA correto
+let isOptionsModal = false;
+const optionsModal = document.querySelector("#options-modal");
 
-// @todo - função options
-// @todo - resolve bugs da filtragem
+document.querySelector("#options-button").addEventListener("click", ()=>{
+  if(!isOptionsModal){
+    optionsModal.classList.remove("hidden");
+    isOptionsModal = true;
+    return
+  }
+
+  optionsModal.classList.add("hidden");
+  isOptionsModal = false;
+})
+
+// @todo - refatorar projeto
 
 // @todo - fazer o carrosel se mover ao clicar e arrastar (diferencial)

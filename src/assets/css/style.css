@@ -22,7 +22,7 @@ body{
 
   background-color: var(--background);
 
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -68,7 +68,7 @@ body::-webkit-scrollbar-thumb {
   gap: 20px;
 
   min-width: 350px;
-  max-width: fit-content;
+  max-width: 500px;
 
   padding: 50px 15px;
 
@@ -268,6 +268,8 @@ body::-webkit-scrollbar-thumb {
 .main--content--header--container--functions{
   display: flex;
   gap: 20px;
+
+  position: relative;
 }
 
 .main--content--header--container--functions--favorite{
@@ -292,6 +294,50 @@ body::-webkit-scrollbar-thumb {
   outline: none;
   background-color: transparent;
   cursor: pointer;
+
+  border: 1px solid red;
+}
+
+.main--content--header--container--functions--options-modal{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  position: absolute;
+  right: 0;
+  bottom: -480%;
+  z-index: 10;
+
+  padding: 20px 10px;
+
+  border: 1px solid var(--divider);
+  border-radius: 4px;
+
+  box-shadow: -2px 3px 4px var(--divider);
+  background-color: var(--background);
+}
+.main--content--header--container--functions--options-modal.hidden{
+  display: none !important;
+}
+
+.main--content--header--container--functions--options-modal--button{
+  width: 150px;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--secondary-gray);
+
+  padding: 5px 10px;
+
+  border-bottom: 1px solid var(--divider);
+}
+.main--content--header--container--functions--options-modal--button:hover{
+  color: var(--primary-gray);
 }
 
 .main--content--header--container--functions--options--cube{
@@ -337,7 +383,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 4px;
 
   box-shadow: -2px 3px 4px var(--divider);
-
+  background-color: var(--background);
 }
 
 .main--content--add--modal--header{
@@ -656,6 +702,23 @@ body::-webkit-scrollbar-thumb {
   font-weight: 600;
   font-size: 1.2rem;
   color: var(--secondary-gray);
+}
+
+@media (max-width: 500px){
+  .aside--container{
+    padding: 0px 10px;
+  }
+
+  .aside--container--image-container--card:first-child{
+    margin-left: -103%;
+  }
+
+  .aside--container--button.left{
+    left: 0%;
+  }
+  .aside--container--button.right{
+    right: 0%;
+  }
 }
  
 @media (max-width: 750px) {
