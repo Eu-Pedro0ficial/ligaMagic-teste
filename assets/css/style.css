@@ -651,6 +651,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   align-items: center;
   gap: 15px;
+  width: 100px;
 }
 
 .main--content--detail--info--container--marketplace-price--divider{

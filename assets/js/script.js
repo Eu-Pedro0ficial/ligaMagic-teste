@@ -176,7 +176,6 @@ document.querySelector("#add-button").addEventListener("click", ()=> setValueInC
 document.querySelector("#subtract-button").addEventListener("click", ()=> setValueInCard(--amount));
 
 document.querySelector("#more-info-detail").addEventListener("click", ()=>{
-
   if(cardArtist.parentNode.classList.contains("hidden")){
     cardArtist.parentNode.classList.remove("hidden");
     cardRarity.parentNode.classList.remove("hidden");
@@ -187,8 +186,15 @@ document.querySelector("#more-info-detail").addEventListener("click", ()=>{
   cardRarity.parentNode.classList.add("hidden");
 });
 
-document.querySelector("#more-info-marketplace").addEventListener("click", ()=>{
+const hiddenSession = document.querySelector("#hidden-session");
 
+document.querySelector("#more-info-marketplace").addEventListener("click", ()=>{
+  if(hiddenSession.classList.contains("hidden")){
+    hiddenSession.classList.remove("hidden");
+    return
+  }
+
+  hiddenSession.classList.add("hidden");
 });
 
 const marketplaceSessionBalloon = document.querySelector("#marketplace-balloon");
@@ -304,5 +310,3 @@ document.querySelector("#options-button").addEventListener("click", ()=>{
   optionsModal.classList.add("hidden");
   isOptionsModal = false;
 })
-
-// @todo - fazer o carrosel se mover ao clicar e arrastar (diferencial) drag an hover
